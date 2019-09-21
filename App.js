@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import * as Permissions from 'expo-permissions'
-import { Camera } from 'expo-camera'
+import { RNCamera } from 'react-native-camera'
 import styled from 'styled-components/native'
 
 const EmptyView = styled.View``
@@ -16,7 +16,7 @@ const Container = styled.TouchableOpacity`
   flex: 1;
 `
 
-const StyledCamera = styled(Camera)`
+const StyledCamera = styled(RNCamera)`
   flex: 1;
 `
 
@@ -40,7 +40,10 @@ function App() {
   }
 
   const takePhoto = async () => {
+    console.warn('in take photo')
     if (cameraRef) {
+      console.warn('has camera ref')
+      console.log(cameraRef.takePictureAsync)
       let newPhoto = await cameraRef.takePictureAsync()
       setPhoto(newPhoto)
     }

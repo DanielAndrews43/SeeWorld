@@ -3738,6 +3738,12 @@ react-native-branch@~3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-3.0.1.tgz#5b07b61cbd290168cd3c3662e017ebe0f356d2ca"
 
+react-native-camera@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-3.4.0.tgz#1591acdb76d626b9630299fe5dd9d3d77c4e58e5"
+  dependencies:
+    prop-types "^15.6.2"
+
 react-native-gesture-handler@~1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.3.0.tgz#d0386f565928ccc1849537f03f2e37fd5f6ad43f"
