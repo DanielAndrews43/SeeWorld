@@ -1,19 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react'
-import * as Permissions from 'expo-permissions'
 import { RNCamera } from 'react-native-camera'
 import styled from 'styled-components/native'
+// import Tts from 'react-native-tts'
+// const vision = require('@google-cloud/vision')
 
-const EmptyView = styled.View``
+// const client = new vision.ImageAnnotatorClient()
+
+const EmptyView = styled.View`
+  background-color: yellow;
+`
 
 const NeedPermissionView = styled.View`
   justify-content: center;
   align-items: center;
+  background-color: red;
 `
 
 const NoPermissionText = styled.Text``
 
 const Container = styled.TouchableOpacity`
   flex: 1;
+  background-color: blue;
 `
 
 const StyledCamera = styled(RNCamera)`
@@ -40,18 +47,21 @@ function App() {
   }
 
   const takePhoto = async () => {
-    console.warn('in take photo')
     if (cameraRef) {
-      console.warn('has camera ref')
-      console.log(cameraRef.takePictureAsync)
       let newPhoto = await cameraRef.takePictureAsync()
+      console.warn(newPhoto)
       setPhoto(newPhoto)
+
+      // const [result] = await client.labelDetection(newPhoto)
+      // const labels = result.labelAnnotations
+      // labels.forEach(label => console.warn(label.description))
+      // labels.forEach(label => Tts.speak(label))
     }
   }
 
-  useEffect(() => {
-    askPermission()
-  })
+  // useEffect(() => {
+  //   askPermission()
+  // })
 
   if (hasPermission === null) {
     return <EmptyView />
@@ -64,7 +74,7 @@ function App() {
   } else {
     return (
       <Container onPress={takePhoto}>
-        <StyledCamera ref={cameraRef} type={Camera.Constants.Type.back} />
+        <StyledCamera ref={cameraRef} type={RNCamera.Constants.Type.back} />
         {photo && <Image source={photo} />}
       </Container>
     )

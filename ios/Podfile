@@ -32,6 +32,4 @@ target 'SeeWorld' do
 
   use_unimodules!
 
-  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
-
 end
